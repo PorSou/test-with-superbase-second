@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Supercutie Next.js App with Supabase & Prisma
+
+A full-stack Next.js application featuring a cute pastel UI, Supabase backend database (`super` table), and Prisma ORM.
 
 ## Getting Started
 
-First, run the development server:
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Configure Environment Variables**:
+   Create a `.env` or `.env.local` file with your Supabase credentials:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=https://oywcsfdorgokqsjvdkcn.supabase.co
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_Zaaqjke5mnGyvkPNkYN_0w_LAwbunCD
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_Zaaqjke5mnGyvkPNkYN_0w_LAwbunCD
+   DATABASE_URL="postgresql://postgres.oywcsfdorgokqsjvdkcn:[PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+   DIRECT_URL="postgresql://postgres.oywcsfdorgokqsjvdkcn:[PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Import your GitHub repository (`test-with-superbase-second`) into [Vercel](https://vercel.com).
+2. Configure the following **Environment Variables** in your Vercel project settings:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (and/or `NEXT_PUBLIC_SUPABASE_ANON_KEY`)
+   - `DATABASE_URL` (Supabase transaction pooler connection string, port 6543)
+   - `DIRECT_URL` (Supabase direct connection string, port 5432)
+3. Deploy! Vercel will automatically run `prisma generate` (`postinstall`) and build your application.
