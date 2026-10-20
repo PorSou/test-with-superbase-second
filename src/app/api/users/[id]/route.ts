@@ -22,7 +22,7 @@ export async function GET(
   } catch (error) {
     console.error('Failed to fetch user:', error)
     return NextResponse.json(
-      { success: false, error: 'Internal Server Error' },
+      { success: false, error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     )
   }
@@ -49,7 +49,7 @@ export async function PATCH(
   } catch (error) {
     console.error('Failed to update user:', error)
     return NextResponse.json(
-      { success: false, error: 'Internal Server Error or User not found' },
+      { success: false, error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     )
   }
@@ -69,7 +69,7 @@ export async function DELETE(
   } catch (error) {
     console.error('Failed to delete user:', error)
     return NextResponse.json(
-      { success: false, error: 'Internal Server Error or User not found' },
+      { success: false, error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     )
   }

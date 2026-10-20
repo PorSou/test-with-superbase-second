@@ -8,7 +8,7 @@ export async function GET() {
   } catch (error) {
     console.error('Failed to fetch users:', error)
     return NextResponse.json(
-      { success: false, error: 'Internal Server Error' },
+      { success: false, error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     )
   }
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Failed to create user:', error)
     return NextResponse.json(
-      { success: false, error: 'Internal Server Error' },
+      { success: false, error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     )
   }
